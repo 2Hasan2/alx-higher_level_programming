@@ -17,3 +17,4 @@ git config --global alias.pacp '!f() { MESSAGE=${1:-"$(date +\%Y\-\%m\-\%d\ \%I:
 git config --global alias.slog 'log --oneline --graph --all --decorate'
 ```
 
+## #!/usr/bin/python3
