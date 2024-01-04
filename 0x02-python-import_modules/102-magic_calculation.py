@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+
 def magic_calculation(a, b):
+    """bytecode"""
     from calculator_1 import add, sub
 
     if a < b:
