@@ -1,3 +1,4 @@
 #!/usr/bin/env python3
 def no_c(my_string):
-    return my_string.replace("c", "").replace("C", "")
+    new_string = "".join([ele for ele in my_string if ele.lower() != 'c'])
+    return new_string
