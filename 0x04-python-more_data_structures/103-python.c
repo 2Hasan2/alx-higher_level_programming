@@ -68,30 +68,3 @@ void print_python_list(PyObject *py_obj)
             print_python_bytes(obj);
     }
 }
-
-/**
- * print_python_dict - Prints dictionary information
- *
- * @py_obj: Python Object
- * Return: no return
- */
-void print_python_dict(PyObject *py_obj)
-{
-    long int size, i;
-    PyDictObject *dict;
-    PyObject *key, *value;
-
-    size = ((PyVarObject *)(py_obj))->ob_size;
-    dict = (PyDictObject *)py_obj;
-
-    printf("[*] Python dictionary info\n");
-    printf("[*] Size of the Python Dictionary = %ld\n", size);
-
-    for (i = 0; i < size; i++)
-    {
-        key = PyDict_GetItem(dict, dict->ma_keys[i]);
-        value = PyDict_GetItem(dict, dict->ma_values[i]);
-
-        printf("Key: %s, Value: %s\n", ((PyUnicodeObject *)key)->ob_sval, ((PyUnicodeObject *)value)->ob_sval);
-    }
-}
