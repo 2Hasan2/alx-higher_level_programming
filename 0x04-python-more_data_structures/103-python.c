@@ -9,9 +9,8 @@
  */
 void print_python_bytes(PyObject *py_obj)
 {
-    PyBytesObject *byte_obj = (PyBytesObject *)py_obj;
-    long int size = PyBytes_Size(py_obj);
-    char *byte_string = PyBytes_AsString(py_obj);
+    char *byte_string;
+    long int size, i, limit;
 
     printf("[.] bytes object info\n");
     if (!PyBytes_Check(py_obj))
@@ -20,18 +19,24 @@ void print_python_bytes(PyObject *py_obj)
         return;
     }
 
+    size = ((PyVarObject *)(py_obj))->ob_size;
+    byte_string = ((PyBytesObject *)py_obj)->ob_sval;
+
     printf("  size: %ld\n", size);
     printf("  trying string: %s\n", byte_string);
 
-    long int limit = (size >= 10) ? 10 : size + 1;
+    if (size >= 10)
+        limit = 10;
+    else
+        limit = size + 1;
 
     printf("  first %ld bytes:", limit);
 
-    for (long int i = 0; i < limit; i++)
-    {
-        unsigned char byte = byte_string[i];
-        printf(" %02x", byte);
-    }
+    for (i = 0; i < limit; i++)
+        if (byte_string[i] >= 0)
+            printf(" %02x", byte_string[i]);
+        else
+            printf(" %02x", 256 + byte_string[i]);
 
     printf("\n");
 }
@@ -44,17 +49,21 @@ void print_python_bytes(PyObject *py_obj)
  */
 void print_python_list(PyObject *py_obj)
 {
-    PyListObject *list = (PyListObject *)py_obj;
-    long int size = PyList_Size(py_obj);
+    long int size, i;
+    PyListObject *list;
+    PyObject *obj;
+
+    size = ((PyVarObject *)(py_obj))->ob_size;
+    list = (PyListObject *)py_obj;
 
     printf("[*] Python list info\n");
     printf("[*] Size of the Python List = %ld\n", size);
     printf("[*] Allocated = %ld\n", list->allocated);
 
-    for (long int i = 0; i < size; i++)
+    for (i = 0; i < size; i++)
     {
-        PyObject *obj = PyList_GetItem(py_obj, i);
-        printf("Element %ld: %s\n", i, Py_TYPE(obj)->tp_name);
+        obj = ((PyListObject *)py_obj)->ob_item[i];
+        printf("Element %ld: %s\n", i, ((obj)->ob_type)->tp_name);
         if (PyBytes_Check(obj))
             print_python_bytes(obj);
     }
