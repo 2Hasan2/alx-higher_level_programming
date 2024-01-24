@@ -3,4 +3,5 @@
 
 
 class Square:
+    """Empty square class"""
     pass
