@@ -4,3 +4,9 @@
 0
 >>> add_integer(-1, 1)
 0
+>>> add_integer(1)
+99
+>>> add_integer(1.5)
+99
+>>> add_integer(1.5, 2.5)
+3
