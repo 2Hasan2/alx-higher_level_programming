@@ -324,7 +324,7 @@ class Animal(metaclass=ABCMeta):
 	def __init__(self, name):
 		self.name = name
 	
-	@abstractmethod
+	@abstractmethod # abstract method - it must be implemented in the derived class or it will raise an error
 	def speak(self):
 		pass
 
@@ -335,6 +335,7 @@ class Dog(Animal):
 class Cat(Animal):
 	def speak(self):
 		return self.name + " says meow!"
+	pass
 	
 
 dog = Dog("Rex")
@@ -342,3 +343,43 @@ cat = Cat("Felix")
 
 print(dog.speak())
 print(cat.speak())
+
+# .............................................
+
+# Data Classes
+# Data classes are classes that are meant to store data.
+# Data classes are defined in the dataclasses module.
+# Data classes are used to create classes that store data.
+# Data classes are mutable.
+# Data classes are like named tuples, dictionaries, and simple class but with extra features.
+
+# example
+from dataclasses import dataclass
+
+@dataclass
+class Person:
+	name: str
+	age: int
+	weight: float
+
+person = Person("John Doe", 33, 150.5)
+print(person.name)
+print(person.age)
+print(person.weight)
+
+# advanced example
+from dataclasses import dataclass, field
+from typing import List
+
+@dataclass
+class Person:
+	name: str
+	age: int
+	weight: float
+	friends: List[str] = field(default_factory=list)
+
+person = Person("John Doe", 33, 150.5)
+print(person.name)
+print(person.age)
+print(person.weight)
+print(person.friends)
