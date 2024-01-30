@@ -1,5 +1,7 @@
 # ----
 # 5. OOP
+
+# before OOP you have to know that everything in python is a fucking object.. OOP DONE
 # ----
 # OOP is a programming paradigm that provides a means of structuring programs so that properties and behaviors are bundled into individual objects.
 # For instance, an object could represent a person with a name property, age, address, etc., with behaviors like walking, talking, breathing, and running.
@@ -39,3 +41,38 @@ print(member2)
 # delete an instance of the class
 del member1
 del member2
+
+
+# class methods vs instance methods
+class MyClass:
+	# class method
+	@classmethod
+	def class_method(cls):
+		print("Class method")
+
+	# instance method
+	def instance_method(self):
+		print("Instance method")
+
+MyClass.class_method()
+# MyClass.instance_method() # error
+
+my_class = MyClass()
+my_class.instance_method()
+# class method can be called by an instance : why ? because it's a class method, not an instance method ! :)
+my_class.class_method()
+
+# static methods
+class MyClass:
+	# static method
+	@staticmethod
+	def static_method():
+		print("Static method")
+
+#  static method can be called by a class or an instance
+# it doesn't have access to the class or instance
+# so you can use it to create a utility function like a helper function or a function that doesn't need to access the class or instance
+MyClass.static_method()
+my_class = MyClass()
+my_class.static_method()
+
