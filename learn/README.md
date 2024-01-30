@@ -31,4 +31,5 @@ In Python's object-oriented programming (OOP) paradigm, special methods, also kn
 27. `__subclasshook__`: Invoked by `issubclass()` to check subclass relationships.
 28. `__weakref__`: Contains weak references to the object.
 
+
 These methods provide hooks into the Python object model, allowing you to customize the behavior of your classes and instances. They are powerful tools for creating custom objects and defining how they interact with Python's built-in functionality.
