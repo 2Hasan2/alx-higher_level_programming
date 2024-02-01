@@ -70,3 +70,17 @@ print(b, type(b))
 a = 14
 b = oct(a)
 print(b, type(b))
+
+
+# type hinting
+def add(a: int, b: int) -> int:
+	return a + b
+
+print(add(1, 2))
+
+# type hinting with list
+from typing import List
+def add(a: List[int]) -> int:
+	return sum(a)
+
+print(add([1, 2, 3, 4, 5]))
