@@ -9,4 +9,9 @@
 
 
 ##  ValueError
-raise ValueError('This is the error message.')
+# raise ValueError('This is the error message.')
+
+
+##  AssertionError
+assert False, 'This is the error message.'
+
