@@ -2,6 +2,7 @@
 
 """MyList module"""
 
+
 class MyList(list):
     """MyList class"""
 
