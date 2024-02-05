@@ -2,6 +2,7 @@
 
 """ Module to create a class """
 
+
 class BaseGeometry:
     """ Class BaseGeometry """
     pass
