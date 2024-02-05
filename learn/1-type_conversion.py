@@ -83,4 +83,3 @@ from typing import List
 def add(a: List[int]) -> int:
 	return sum(a)
 
-print(add([1, 2, 3, 4, 5]))
