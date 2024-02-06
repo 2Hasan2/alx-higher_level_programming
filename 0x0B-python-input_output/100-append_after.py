@@ -5,10 +5,11 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """Append after"""
-    with open(filename, mode='r', encoding='utf-8') as f:
-        lines = f.readlines()
-        for i in range(len(lines)):
-            if search_string in lines[i]:
-                lines.insert(i + 1, new_string)
-    with open(filename, mode='w', encoding='utf-8') as f:
-        f.write("".join(lines))
+    text = ""
+    with open(filename) as r:
+        for line in r:
+            text += line
+            if search_string in line:
+                text += new_string
+    with open(filename, "w") as w:
+        w.write(text)
