@@ -105,28 +105,37 @@ class Base:
         
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Draw rectangles and squares using the turtle module."""
+        """Draw Rectangles and Squares using the turtle module.
 
-        turtle.bgcolor("black")
-        turtle.title("Rectangles and Squares")
-        turtle.shape("turtle")
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        tr = turtle.Turtle()
+        tr.screen.bgcolor("black")
+        tr.pensize(3)
+        tr.hideturtle()
 
+        tr.color("#c33")
         for rect in list_rectangles:
-            turtle.penup()
-            turtle.color("white")
-            turtle.goto(rect.x, rect.y)
-            turtle.pendown()
-            turtle.forward(rect.width)
-            turtle.left(90)
-            turtle.forward(rect.height)
-            turtle.left(90)
-            turtle.forward(rect.width)
-            turtle.left(90)
-            turtle.forward(rect.height)
-            turtle.left(90)
+            tr.up()
+            tr.goto(rect.x, rect.y)
+            tr.down()
+            for i in range(2):
+                tr.forward(rect.width)
+                tr.left(90)
+                tr.forward(rect.height)
+                tr.left(90)
 
-        for square in list_squares:
-            turtle.penup()
-            turtle.color("red")
-            turtle.goto(square.x, square.y)
-            turtle.pendown()
+        tr.color("#bf8")
+        for sq in list_squares:
+            tr.up()
+            tr.goto(sq.x, sq.y)
+            tr.down()
+            for i in range(2):
+                tr.forward(sq.width)
+                tr.left(90)
+                tr.forward(sq.height)
+                tr.left(90)
+
+        turtle.exitonclick()
