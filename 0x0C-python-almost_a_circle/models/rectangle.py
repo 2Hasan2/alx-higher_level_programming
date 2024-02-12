@@ -87,7 +87,6 @@ class Rectangle(Base):
         if len(args) >= 5:
             self.y = args[4]
 
-
     # Errors Handling
     def integer_validator(self, name, value):
         """Validate the value."""
