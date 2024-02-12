@@ -101,3 +101,33 @@ class Base:
                             y=int(r[3])) for r in list_objs]
         except IOError:
             return []
+        
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw rectangles and squares using the turtle module."""
+        import turtle
+        import random
+
+        turtle.bgcolor("white")
+        turtle.title("Rectangles and Squares")
+        turtle.shape("turtle")
+
+        for rect in list_rectangles:
+            turtle.penup()
+            turtle.color("black")
+            turtle.goto(rect.x, rect.y)
+            turtle.pendown()
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.color("black")
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
