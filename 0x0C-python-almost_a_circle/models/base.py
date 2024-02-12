@@ -3,6 +3,7 @@
 
 import json
 
+
 class Base:
     """Base model."""
     __nb_objects = 0
@@ -33,6 +34,7 @@ class Base:
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
                 file.write(Base.to_json_string(list_dicts))
+
     @staticmethod
     def from_json_string(json_string):
         """Return the list represented by json_string."""
