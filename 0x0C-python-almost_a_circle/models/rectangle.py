@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""this defines a class named rectangle"""
-
-
+"""Rectangle module."""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """class Rectangle implements Base"""
+    """ Rectangle class."""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialize a new Rectangle."""
         self.width = width
@@ -17,92 +16,54 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """adding width the getter for width"""
+        """Get the width of the Rectangle."""
         return self.__width
 
     @width.setter
-    def width(self, width):
-        """validates the value"""
-        self.validator("width", width)
-        self.__width = width
+    def width(self, value):
+        """Set the width of the Rectangle."""
+        self.integer_validator("width", value)
+        self.__width = value
 
     @property
     def height(self):
-        """getter for the height"""
+        """Get the height of the Rectangle."""
         return self.__height
 
     @height.setter
-    def height(self, height):
-        self.validator("height", height)
-        self.__height = height
-
-    def validator(self, name, value):
-        """validates the value"""
-        if type(value) is not int:
-            raise TypeError(f"{name} must be an integer")
-        if value <= 0 and (name == "width" or name == "height"):
-            raise ValueError(f"{name} must be > 0")
-        if value < 0 and (name == "x" or name == "y"):
-            raise ValueError(f"{name} must be >= 0")
+    def height(self, value):
+        """Set the height of the Rectangle."""
+        self.integer_validator("height", value)
+        self.__height = value
 
     @property
     def x(self):
-        "getter for x"
+        """Get the x of the Rectangle."""
         return self.__x
 
     @x.setter
-    def x(self, x):
-        """validates the vale"""
-        self.validator("x", x)
-        self.__x = x
+    def x(self, value):
+        """Set the x of the Rectangle."""
+        self.integer_validator("x", value)
+        self.__x = value
 
     @property
     def y(self):
-        """getter for y"""
+        """Get the y of the Rectangle."""
         return self.__y
 
     @y.setter
-    def y(self, y):
-        self.validator("y", y)
-        self.__y = y
+    def y(self, value):
+        """Set the y of the Rectangle."""
+        self.integer_validator("y", value)
+        self.__y = value
 
-    def area(self):
-        """returns the area value"""
-        return (self._width * self._height)
-
-    def display(self):
-        """dispaly the rectangle in stdout"""
-        if self.__y != 0:
-            print("\n" * self.__y, end="")
-        for height in range(0, self.__height):
-            print(" " * self.__x, end="")
-            for width in range(0, self.__width):
-                print("#", end="")
-            print("")
-
-    def _str_(self):
-        """returns  task 6"""
-        return (
-                f"[{type(self)._name}] ({self.id}) {self.x}/{self._y}"
-                f" - {self._width}/{self._height}"
-                )
-
-    def update(self, *args, **kwargs):
-        """adding the new values to variables"""
-        if len(args) == 0:
-            for key, value in kwargs.items():
-                self._setattr_(key, value)
-            return
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
-
-    def to_dictionary(self):
-        """returns dicitionary represention"""
-        return {'x': self._x, 'y': self._y, 'id': self.id,
-                'height': self._height, 'width': self._width}
+    # Errors Handling
+    def integer_validator(self, name, value):
+        """Validate the value."""
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(name))
+        if name in ("width", "height") and value <= 0:
+            raise ValueError("{} must be > 0".format(name))
+        if name in ("x", "y") and value < 0:
+            raise ValueError("{} must be >= 0".format(name))
