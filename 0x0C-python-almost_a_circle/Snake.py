@@ -175,5 +175,4 @@ while True:
 
     time.sleep(delay)
 
-wn.mainloop()
-S
+# wn.mainloop()
