@@ -22,11 +22,8 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, width):
-        if type(width) is not int:
-            raise TypeError("width must be an integer")
-        if width <= 0:
-            raise ValueError("width must be > 0")
-
+        """validates the value"""
+        self.validator("width", width)
         self.__width = width
 
     @property
@@ -36,12 +33,18 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, height):
-        if type(height) is not int:
-            raise TypeError("height must be an integer")
-        if height <= 0:
-            raise ValueError("heigth must be > 0")
-
+        self.validator("height", height)
         self.__height = height
+
+
+    def validator(self, name, value):
+        """validates the value"""
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
+        if value <= 0 and (name == "width" or name == "height"):
+            raise ValueError(f"{name} must be > 0")
+        if value < 0 and (name == "x" or name == "y"):
+            raise ValueError(f"{name} must be >= 0")
 
     @property
     def x(self):
@@ -50,11 +53,8 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, x):
-        if type(x) is not int:
-            raise TypeError("x must be an integer")
-        if x < 0:
-            raise ValueError("x must be >= 0")
-
+        """validates the value"""
+        self.validator("x", x)
         self.__x = x
 
     @property
@@ -64,11 +64,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, y):
-        if type(y) is not int:
-            raise TypeError("y must be an integer")
-        if y < 0:
-            raise ValueError("y must be >= 0")
-
+        self.validator("y", y)
         self.__y = y
 
     def area(self):
