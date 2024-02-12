@@ -52,7 +52,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, x):
-        """validates the value"""
+        """validates the vale"""
         self.validator("x", x)
         self.__x = x
 
