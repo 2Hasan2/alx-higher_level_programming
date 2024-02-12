@@ -2,6 +2,7 @@
 
 """Defines a base model class."""
 import json
+import csv
 
 
 class Base:
@@ -62,5 +63,41 @@ class Base:
             with open(filename, "r") as file:
                 list_dicts = Base.from_json_string(file.read())
                 return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Write the CSV string representation of list_objs to a file."""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w") as file:
+            if list_objs is None:
+                file.write("")
+            else:
+                if cls.__name__ == "Rectangle":
+                    [file.write("{},{},{},{},{}\n".format(
+                        obj.id, obj.width, obj.height, obj.x, obj.y))
+                        for obj in list_objs]
+                elif cls.__name__ == "Square":
+                    [file.write("{},{},{},{}\n".format(
+                        obj.id, obj.size, obj.x, obj.y))
+                        for obj in list_objs]
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of instances."""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r") as file:
+                if cls.__name__ == "Rectangle":
+                    list_objs = csv.reader(file, delimiter=',', quotechar='"')
+                    return [cls.create(id=int(r[0]), width=int(r[1]),
+                            height=int(r[2]),
+                            x=int(r[3]), y=int(r[4])) for r in list_objs]
+                elif cls.__name__ == "Square":
+                    list_objs = csv.reader(file, delimiter=',', quotechar='"')
+                    return [cls.create(id=int(r[0]), size=int(r[1]),
+                            x=int(r[2]),
+                            y=int(r[3])) for r in list_objs]
         except IOError:
             return []
