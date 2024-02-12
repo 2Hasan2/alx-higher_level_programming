@@ -16,54 +16,52 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Get the width of the Rectangle."""
+        """Set/get the width of the Rectangle."""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set the width of the Rectangle."""
-        self.integer_validator("width", value)
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
     def height(self):
-        """Get the height of the Rectangle."""
+        """Set/get the height of the Rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set the height of the Rectangle."""
-        self.integer_validator("height", value)
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        if value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
     def x(self):
-        """Get the x of the Rectangle."""
+        """Set/get the x coordinate of the Rectangle."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Set the x of the Rectangle."""
-        self.integer_validator("x", value)
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
     def y(self):
-        """Get the y of the Rectangle."""
+        """Set/get the y coordinate of the Rectangle."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Set the y of the Rectangle."""
-        self.integer_validator("y", value)
-        self.__y = value
-
-    # Errors Handling
-    def integer_validator(self, name, value):
-        """Validate the value."""
         if type(value) != int:
-            raise TypeError("{} must be an integer".format(name))
-        if name in ("width", "height") and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
-        if name in ("x", "y") and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
+            raise TypeError("y must be an integer")
+        if value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value
