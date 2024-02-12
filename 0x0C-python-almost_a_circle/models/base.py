@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+
+"""Defines a base model class."""
+import json
+
+
 class Base:
     """Base model."""
     __nb_objects = 0
@@ -47,3 +53,14 @@ class Base:
             dummy = cls()
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Return a list of instances."""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                list_dicts = Base.from_json_string(file.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
