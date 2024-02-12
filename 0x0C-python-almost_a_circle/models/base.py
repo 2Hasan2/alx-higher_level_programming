@@ -107,13 +107,13 @@ class Base:
     def draw(list_rectangles, list_squares):
         """Draw rectangles and squares using the turtle module."""
 
-        turtle.bgcolor("white")
+        turtle.bgcolor("black")
         turtle.title("Rectangles and Squares")
         turtle.shape("turtle")
 
         for rect in list_rectangles:
             turtle.penup()
-            turtle.color("black")
+            turtle.color("white")
             turtle.goto(rect.x, rect.y)
             turtle.pendown()
             turtle.forward(rect.width)
@@ -127,6 +127,6 @@ class Base:
 
         for square in list_squares:
             turtle.penup()
-            turtle.color("black")
+            turtle.color("red")
             turtle.goto(square.x, square.y)
             turtle.pendown()
