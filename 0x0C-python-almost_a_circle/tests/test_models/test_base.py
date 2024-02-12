@@ -46,5 +46,6 @@ class TestBaseSaveToFile(unittest.TestCase):
         with open("Square.json", "r") as file:
             self.assertEqual(str, type(file.read()))
 
+
 if __name__ == "__main__":
     unittest.main()
