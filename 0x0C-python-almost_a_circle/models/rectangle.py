@@ -36,7 +36,6 @@ class Rectangle(Base):
         self.validator("height", height)
         self.__height = height
 
-
     def validator(self, name, value):
         """validates the value"""
         if type(value) is not int:
