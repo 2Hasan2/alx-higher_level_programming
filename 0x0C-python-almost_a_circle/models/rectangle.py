@@ -69,6 +69,11 @@ class Rectangle(Base):
         for i in range(self.height):
             print(" " * self.x + "#" * self.width)
 
+    def __str__(self):
+        """Return the string representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
+
     # Errors Handling
     def integer_validator(self, name, value):
         """Validate the value."""
