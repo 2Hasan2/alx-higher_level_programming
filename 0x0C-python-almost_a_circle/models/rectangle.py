@@ -58,10 +58,16 @@ class Rectangle(Base):
         self.integer_validator("y", value)
         self.__y = value
 
-
     def area(self):
         """Return the area of the Rectangle."""
         return self.width * self.height
+    
+    def display(self):
+        """Print the Rectangle with the character #."""
+        for i in range(self.y):
+            print()
+        for i in range(self.height):
+            print(" " * self.x + "#" * self.width)
 
     # Errors Handling
     def integer_validator(self, name, value):
