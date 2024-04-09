@@ -1,3 +1,5 @@
 #!/usr/bin/node
 
-console.log(parseInt(process.argv[2]) + parseInt(process.argv[3]));
+exports.add = function (a, b) {
+  return (a + b);
+};
