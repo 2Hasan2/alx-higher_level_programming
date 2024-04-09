@@ -2,5 +2,10 @@
 
 const x = +process.argv[2];
 
-if (isNaN(x)) console.log('Missing number of occurrences');
-else Array(x).fill('C is fun').forEach(ele => console.log(ele));
+if (isNaN(x)) {
+    console.log('Missing number of occurrences');
+} else {
+    for (let i = 0; i < x; i++) {
+        console.log('C is fun');
+    }
+}
