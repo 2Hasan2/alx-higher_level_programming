@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `learn`;CREATE DATABASES IF NOT EXISTS `learn`;
 
+USE learn;
+
 CREATE TABLE student (
     student_id INT PRIMARY KEY,
     name VARCHAR(20),
