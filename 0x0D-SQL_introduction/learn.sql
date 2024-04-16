@@ -8,4 +8,8 @@ CREATE TABLE IF NOT EXISTS  student (
     major VARCHAR(20)
 );
 
+
+
+ALTER TABLE student ADD gpa DECIMAL(3, 2);
+
 DESCRIBE student;
