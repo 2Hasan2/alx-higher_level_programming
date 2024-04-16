@@ -36,16 +36,16 @@ USE faker;
 -- DELETE FROM  student
 -- WHERE name = 'jack';
 
-SELECT *
-FROM student
--- filter it
--- <> not 
-WHERE major <> "Electrical Engineering"
--- if in (.....)
-AND major IN ("Computer Science", "Software Engineering")
--- between num to num
-AND student_id BETWEEN 20 AND 60
--- list it by order
-ORDER BY major, student_id
--- limit 5 student
-LIMIT 30;
+-- SELECT *
+-- FROM student
+-- -- filter it
+-- -- <> not 
+-- WHERE major <> "Electrical Engineering"
+-- -- if in (.....)
+-- AND major IN ("Computer Science", "Software Engineering")
+-- -- between num to num
+-- AND student_id BETWEEN 20 AND 60
+-- -- list it by order
+-- ORDER BY major, student_id
+-- -- limit 5 student
+-- LIMIT 30;
