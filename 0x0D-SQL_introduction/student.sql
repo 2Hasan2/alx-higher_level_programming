@@ -11,8 +11,11 @@ USE faker;
 --     major VARCHAR(20)
 -- );
 
+-- ALTER TABLE table_name
+-- ADD age datatype;
+
 -- -- this to modifies column in table
--- ALTER TABLE student MODIFY COLUMN major VARCHAR(20) DEFAULT 'undefind';
+ALTER TABLE student MODIFY COLUMN major VARCHAR(20) DEFAULT 'undefind';
 
 -- -- insert data in the table
 -- INSERT INTO student (name) VALUES("jack");
