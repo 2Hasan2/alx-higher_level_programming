@@ -12,7 +12,8 @@ if __name__ == "__main__":
     cursor = db.cursor()
     match = sys.argv[4]
     qr = """SELECT cities.name FROM
-            cities WHERE cities.state_id = (SELECT id FROM states WHERE name = %s)"""
+            cities WHERE cities.state_id =
+            (SELECT id FROM states WHERE name = %s)"""
     cursor.execute(qr, (match, ))
     rows = cursor.fetchall()
     print(", ".join([row[0] for row in rows]))
