@@ -21,5 +21,5 @@ if __name__ == "__main__":
 
     match = sys.argv[4]
 
-    states = session.query(State).filter(State.name.like(match)).all()
-    [print(state.id) for state in states]
+    state = session.query(State).filter(State.name.like(match)).first()
+    print(state.id if state else "Not found")
