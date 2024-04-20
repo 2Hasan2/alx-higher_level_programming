@@ -2,8 +2,8 @@
 """list all State objects from the database hbtn_0e_6_usa
 """
 import sys
-from model_city import Base, City
-from model_state import State
+from relationship_state import Base, State
+from relationship_city import City
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import (create_engine)
 
